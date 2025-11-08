@@ -62,7 +62,7 @@ const Footer = () => {
             <motion.a
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              href="https://linkedin.com/in/danida-jayakody"
+              href="https://www.linkedin.com/in/danida-jayakody-52a884200"
               target="_blank"
               rel="noopener noreferrer"
               className="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-emerald/10 dark:hover:bg-emerald/20 flex items-center justify-center transition-colors"
@@ -73,7 +73,7 @@ const Footer = () => {
             <motion.a
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              href="mailto:danida@nerdtastic.com"
+              href="mailto:jayakodydanida@gmail.com"
               className="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-emerald/10 dark:hover:bg-emerald/20 flex items-center justify-center transition-colors"
               aria-label="Email"
             >
