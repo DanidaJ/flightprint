@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  # Backend Server
+  server:
+    image: flightprint-server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: flightprint-server
+    restart: unless-stopped
+    expose:
+      - "5000"
+    environment:
+      NODE_ENV: ${NODE_ENV:-production}
+      PORT: ${PORT:-5000}
+      # MongoDB Configuration
+      MONGO_URI: ${MONGO_URI}
+      # Amadeus API Configuration
+      AMADEUS_CLIENT_ID: ${AMADEUS_CLIENT_ID}
+      AMADEUS_CLIENT_SECRET: ${AMADEUS_CLIENT_SECRET}
+      AMADEUS_API_BASE_URL: ${AMADEUS_API_BASE_URL:-https://test.api.amadeus.com}
+      # AeroDataBox API Configuration
+      AERODATABOX_API_KEY: ${AERODATABOX_API_KEY}
+      AERODATABOX_API_HOST: ${AERODATABOX_API_HOST:-aerodatabox.p.rapidapi.com}
+      # CORS Configuration
+      CLIENT_URL: ${CLIENT_URL}
+    networks:
+      - flightprint-network
+      - portfolio-net
+
+  # Frontend Client
+  client:
+    image: flightprint-client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:5000/api}
+    container_name: flightprint-client
+    restart: unless-stopped
+    expose:
+      - "3000"
+    depends_on:
+      - server
+    networks:
+      - flightprint-network
+      - portfolio-net
+
+networks:
+  flightprint-network:
+    driver: bridge
+  portfolio-net:
+    external: true

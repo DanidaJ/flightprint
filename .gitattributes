@@ -1,0 +1,28 @@
+# Git attributes for FlightPrint
+
+# Prevent accidental commits of environment files
+.env filter=git-crypt diff=git-crypt
+.env.local filter=git-crypt diff=git-crypt
+.env.*.local filter=git-crypt diff=git-crypt
+
+# Line endings
+* text=auto
+*.js text eol=lf
+*.jsx text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.sh text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Windows scripts
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
